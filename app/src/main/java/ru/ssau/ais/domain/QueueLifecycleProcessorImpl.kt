@@ -92,7 +92,9 @@ class QueueLifecycleProcessorImpl : QueueLifecycleProcessor {
                 _currentTimeFlow.emit(_currentTimeFlow.value + minutesPeriod)
                 val taskDuration = generateTaskDuration()
                 val task = Task(taskDuration, minutesToDelay(taskDuration))
-                selectLineAndTryStartTask(task, _currentTimeFlow.value)
+                dispatcherMutex.withLock {
+                    selectLineAndTryStartTask(task, _currentTimeFlow.value)
+                }
             }
         }
     }
@@ -114,34 +116,32 @@ class QueueLifecycleProcessorImpl : QueueLifecycleProcessor {
     private fun generateTaskDuration(): Double =
         - ln(random.nextDouble()) / parameters.beta
 
-    private suspend fun checkQueueAndStartTask(timeStart: Double) {
-        dispatcherMutex.withLock {
-            tasksQueue.removeLastOrNull()?.let { queuedTask ->
-                selectLineAndTryStartTask(queuedTask, timeStart)
-            }
+    private fun checkQueueAndStartTask(timeStart: Double) {
+        tasksQueue.removeLastOrNull()?.let { queuedTask ->
+            selectLineAndTryStartTask(queuedTask, timeStart)
         }
     }
 
-    private suspend fun selectLineAndTryStartTask(task: Task, timeStart: Double) {
-        dispatcherMutex.withLock {
-            taskLines.filter { it.isFree }.randomOrNull(random)?.startTask(task, timeStart)
-                ?: if (tasksQueue.size >= parameters.queueSize) {
-                    tasksQueue.add(task)
-                } else {
-                    ++cancelledTasksCount
-                }
-        }
+    private fun selectLineAndTryStartTask(task: Task, timeStart: Double) {
+        taskLines.filter { it.isFree }.randomOrNull(random)?.startTask(task, timeStart)
+            ?: if (tasksQueue.size >= parameters.queueSize) {
+                tasksQueue.add(task)
+            } else {
+                ++cancelledTasksCount
+            }
     }
 
     private fun onTaskCompleted(task: CompletedTask) {
         coroutineScope.launch {
-            val newDataSets = _chartStateFlow.value.lineDataSets.toMutableList().apply {
-                add(task.toDataSet())
+            dispatcherMutex.withLock {
+                val newDataSets = _chartStateFlow.value.lineDataSets.toMutableList().apply {
+                    add(task.toDataSet())
+                }
+                _chartStateFlow.emit(ChartState(newDataSets))
+                ++completedTasksCount
+                _efficientFlow.emit(completedTasksCount.toDouble() / (completedTasksCount + cancelledTasksCount))
+                checkQueueAndStartTask(task.timeEnd)
             }
-            _chartStateFlow.emit(ChartState(newDataSets))
-            ++completedTasksCount
-            _efficientFlow.emit(completedTasksCount.toDouble() / (completedTasksCount + cancelledTasksCount))
-            checkQueueAndStartTask(task.timeEnd)
         }
     }
 }
