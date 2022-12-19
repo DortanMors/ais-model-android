@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".ui.screen.PrepareFragment"
+        >
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/animal"
+            app:autoSizeTextType="uniform"
+            />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/count_layout"
+            android:hint="@string/count"
+            style="@style/CoefficientLayout"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/count"
+                style="@style/CoefficientEditText"
+                tools:ignore="SpeakableTextPresentCheck"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/alpha_layout"
+            android:hint="@string/alpha"
+            style="@style/CoefficientLayout"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/alpha"
+                style="@style/CoefficientEditText"
+                tools:ignore="SpeakableTextPresentCheck"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/beta_layout"
+            android:hint="@string/beta"
+            style="@style/CoefficientLayout"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/beta"
+                style="@style/CoefficientEditText"
+                tools:ignore="SpeakableTextPresentCheck"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/t_layout"
+            android:hint="@string/t"
+            style="@style/CoefficientLayout"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/t"
+                style="@style/CoefficientEditText"
+                tools:ignore="SpeakableTextPresentCheck"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/omega_layout"
+            android:hint="@string/omega"
+            style="@style/CoefficientLayout"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/omega"
+                style="@style/CoefficientEditText"
+                tools:ignore="SpeakableTextPresentCheck"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/i_layout"
+            android:hint="@string/i"
+
+            style="@style/CoefficientLayout"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/i"
+                style="@style/CoefficientEditText"
+                tools:ignore="SpeakableTextPresentCheck"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>
