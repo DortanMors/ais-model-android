@@ -32,12 +32,19 @@ class ChartFragment : Fragment() {
                 viewModel.chartStateFlow.collect { chartState ->
                     binding.chart.data = LineData(chartState.lineDataSets)
                     binding.chart.invalidate()
+                    binding.chart.marker = null
+                    binding.chart.setDrawGridBackground(false)
+                    binding.chart.setDrawMarkers(false)
                 }
+            }
+            lifecycleScope.launch {
                 viewModel.efficientFlow.collect { efficient ->
-                    binding.efficient.text = efficient.toString()
+                    binding.efficientValue.text = efficient.toString()
                 }
+            }
+            lifecycleScope.launch {
                 viewModel.currentTimeFlow.collect { currentTime ->
-                    binding.currentTime.text = currentTime.toString()
+                    binding.currentTimeValue.text = currentTime.toString()
                 }
             }
         }
