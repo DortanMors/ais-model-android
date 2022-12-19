@@ -1,15 +1,13 @@
 <resources>
-    <string name="app_name">population-model-android</string>
-    <string name="count">Count = </string>
-    <string name="alpha">α = </string>
-    <string name="beta">β = </string>
-    <string name="t">t = </string>
-    <string name="omega">ω = </string>
-    <string name="i">i = </string>
-    <string name="animal">animal: </string>
+    <string name="app_name">AIS model</string>
+    <string name="lines_count">Lines count = </string>
+    <string name="time_acceleration">Time acceleration = </string>
+    <string name="model_time">Model time = </string>
+    <string name="queue_size">Queue size = </string>
+    <string name="beta">β (duration) = </string>
+    <string name="lambda">λ (time) = </string>
     <string name="next">NEXT</string>
     <string name="error_value">Enter values must be double</string>
-    <string name="error_value_int">Enter values must be intege</string>
+    <string name="error_value_int">Enter values must be integer</string>
     <string name="error_toast">Check red marks!</string>
-    <string name="max_points">Max plot points =</string>
 </resources>

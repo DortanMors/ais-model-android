@@ -17,41 +17,98 @@
         >
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/max_points_layout"
-            android:hint="@string/max_points"
+            android:id="@+id/time_acceleration_layout"
+            android:hint="@string/time_acceleration"
             style="@style/CoefficientLayout"
             >
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/max_points"
+                android:id="@+id/time_acceleration"
                 style="@style/CoefficientEditText"
                 tools:ignore="SpeakableTextPresentCheck"
                 />
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <include layout="@layout/item_population"
-            android:id="@+id/producer"
-            tools:visibility="gone"
-            />
-        <include layout="@layout/item_population"
-            android:id="@+id/predator"
-            />
-        <include layout="@layout/item_population"
-            android:id="@+id/apex_predator"
-            />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/model_time_layout"
+            android:hint="@string/model_time"
+            style="@style/CoefficientLayout"
+            >
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/button_next"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/next"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="12dp"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/model_time"
+                style="@style/CoefficientEditText"
+                tools:ignore="SpeakableTextPresentCheck"
+                />
 
+        </com.google.android.material.textfield.TextInputLayout>
 
-        />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/lines_count_layout"
+            android:hint="@string/lines_count"
+            style="@style/CoefficientLayout"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/lines_count"
+                style="@style/CoefficientEditText"
+                tools:ignore="SpeakableTextPresentCheck"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/queue_size_layout"
+            android:hint="@string/queue_size"
+            style="@style/CoefficientLayout"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/queue_size"
+                style="@style/CoefficientEditText"
+                tools:ignore="SpeakableTextPresentCheck"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/beta_layout"
+            android:hint="@string/beta"
+            style="@style/CoefficientLayout"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/beta"
+                style="@style/CoefficientEditText"
+                tools:ignore="SpeakableTextPresentCheck"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/lambda_layout"
+            android:hint="@string/lambda"
+            style="@style/CoefficientLayout"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/lambda"
+                style="@style/CoefficientEditText"
+                tools:ignore="SpeakableTextPresentCheck"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/next"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="12dp"
+            />
 
     </LinearLayout>
 

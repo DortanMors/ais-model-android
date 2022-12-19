@@ -5,9 +5,16 @@ import ru.ssau.ais.model.PopulationState
 import ru.ssau.ais.model.PopulationStateImpl
 
 object Defaults {
-    const val timeStep: Long = 1 // время между шагами расчёта в днях
-    const val delay: Long = 1000  // задержка отрисовки в миллисекундах
+    var timeAcceleration: Double = 100.0 // ускорение времени моделирования
+    val delay: Long
+        get() = (1000.0 / timeAcceleration).toLong()  // задержка отрисовки в миллисекундах
     var maxPointsAtAxis: Int = 50 // максимальное количество точек на оси в одно время
+
+    const val modelTime: Long = 100 // время моделирования в минутах
+    const val linesCount: Long = 3
+    const val queueSize: Long = 1
+    const val beta: Double = 0.1
+    const val lambda: Double = 0.1
 
     private val producerPopulationState: PopulationState = PopulationStateImpl(
         PopulationParameters(

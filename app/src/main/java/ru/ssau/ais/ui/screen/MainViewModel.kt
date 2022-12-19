@@ -17,11 +17,9 @@ class MainViewModel : ViewModel() {
         get() = processor.chartStateFlow
 
     fun setProcessorInit(
-        populationsStates: List<PopulationState>,
+        lifecycleInit: LifecycleInit,
     ) {
-        processorInit = LifecycleInit(
-            populationsStates = populationsStates,
-        )
+        processorInit = lifecycleInit
     }
 
     fun start() {
