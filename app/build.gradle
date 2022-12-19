@@ -15,7 +15,7 @@ android {
         def minorVersion = 9
         versionCode majorVersion * 10000 + minorVersion * 1000 + generateVersionCode()
         versionName "$majorVersion.$minorVersion.${generateVersionCode()}"
-        setProperty("archivesBaseName", "PopulationModel" + "-v" + versionName)
+        setProperty("archivesBaseName", "AISModel" + "-v" + versionName)
     }
 
     buildTypes {
