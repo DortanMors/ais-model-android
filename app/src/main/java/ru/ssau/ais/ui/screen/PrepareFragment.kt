@@ -85,6 +85,7 @@ class PrepareFragment : Fragment() {
     private fun navigateToChartFragment() {
         parentFragmentManager.beginTransaction()
             .replace(R.id.container, ChartFragment.newInstance())
+            .addToBackStack(ChartFragment::class.simpleName)
             .commit()
     }
 
