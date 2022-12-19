@@ -7,9 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
-import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
-import com.github.mikephil.charting.data.LineDataSet
 import kotlinx.coroutines.launch
 import ru.ssau.ais.databinding.FragmentChartBinding
 
@@ -31,15 +29,15 @@ class ChartFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         lifecycleScope.launchWhenResumed {
             lifecycleScope.launch {
-                viewModel.populationsStates.collect { chartState ->
-                    val curves = chartState.y.mapIndexed { index, curveData ->
-                        LineDataSet(
-                            chartState.t.zip(curveData).map { (t, y) -> Entry(t.toFloat(), y.toFloat()) },
-                            "Population$index", // todo use real name
-                        )
-                    }
-                    binding.chart.data = LineData(curves)
+                viewModel.chartStateFlow.collect { chartState ->
+                    binding.chart.data = LineData(chartState.lineDataSets)
                     binding.chart.invalidate()
+                }
+                viewModel.efficientFlow.collect { efficient ->
+                    binding.efficient.text = efficient.toString()
+                }
+                viewModel.currentTimeFlow.collect { currentTime ->
+                    binding.currentTime.text = currentTime.toString()
                 }
             }
         }

@@ -68,13 +68,12 @@ class PrepareFragment : Fragment() {
                 value
             }
 
-            Defaults.timeAcceleration = timeAcceleration
-
             viewModel.setProcessorInit(
-                LifecycleInit(
+                QueueParametersInit(
                     modelTime,
                     linesCount,
                     queueSize,
+                    timeAcceleration,
                     beta,
                     lambda,
                 )
